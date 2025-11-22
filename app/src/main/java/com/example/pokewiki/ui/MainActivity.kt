@@ -41,6 +41,20 @@ class MainActivity : AppCompatActivity() {
                             startActivity(intent)
                         }, 200
                     )
+                }
+                R.id.list_pokemon -> {
+                    if (true){
+                        binding.drawerLayout.closeDrawer(GravityCompat.END)
+                        return@setNavigationItemSelectedListener true
+                    } else{
+                        binding.drawerLayout.closeDrawer(GravityCompat.END)
+                        binding.drawerLayout.postDelayed( // Add a slight delay to allow the drawer to close smoothly
+                            {
+                                var intent = Intent(this, MainActivity::class.java)
+                                startActivity(intent)
+                            }, 200
+                        )
+                    }
 
                 }
             }
