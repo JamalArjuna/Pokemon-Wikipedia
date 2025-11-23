@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.pokewiki.R
 import com.example.pokewiki.databinding.ActivityMainBinding
 import com.example.pokewiki.ui.aboutapp.AboutAppActivity
+import com.example.pokewiki.ui.aboutme.AboutMeActivity
 import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.bottomAppbarInclude.fabProfile.setOnClickListener {
+            var intentAboutMe = Intent(this, AboutMeActivity::class.java)
+            startActivity(intentAboutMe)
+        }
+
         // Navigation Item Selected Listener
         binding.navView.setNavigationItemSelectedListener { item ->
             when(item.itemId){
@@ -37,10 +43,11 @@ class MainActivity : AppCompatActivity() {
                     binding.drawerLayout.closeDrawer(GravityCompat.END)
                     binding.drawerLayout.postDelayed( // Add a slight delay to allow the drawer to close smoothly
                         {
-                            var intent = Intent(this, AboutAppActivity::class.java)
-                            startActivity(intent)
+                            var intentAboutApp = Intent(this, AboutAppActivity::class.java)
+                            startActivity(intentAboutApp)
                         }, 200
                     )
+                    return@setNavigationItemSelectedListener true
                 }
                 R.id.list_pokemon -> {
                     if (true){
@@ -50,16 +57,16 @@ class MainActivity : AppCompatActivity() {
                         binding.drawerLayout.closeDrawer(GravityCompat.END)
                         binding.drawerLayout.postDelayed( // Add a slight delay to allow the drawer to close smoothly
                             {
-                                var intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
+                                var intentHome = Intent(this, MainActivity::class.java)
+                                startActivity(intentHome)
                             }, 200
                         )
+                        return@setNavigationItemSelectedListener true
                     }
 
                 }
             }
-            binding.drawerLayout.closeDrawer(GravityCompat.END)
-            true
+            false
         }
     }
 }
