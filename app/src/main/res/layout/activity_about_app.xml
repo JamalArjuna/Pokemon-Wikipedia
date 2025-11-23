@@ -16,7 +16,7 @@
             android:id="@+id/ivLogo"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/logo_App"
+            android:src="@drawable/logo_app"
             android:scaleType="centerCrop"
             app:civ_border_width="3dp"
             android:contentDescription="@string/app_name"
