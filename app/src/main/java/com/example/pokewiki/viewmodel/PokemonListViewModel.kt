@@ -10,7 +10,7 @@ import com.example.pokewiki.data.repository.PokemonRepository
 import kotlinx.coroutines.launch
 
 class PokemonListViewModel(
-    private val repository: PokemonRepository
+    private val repository: PokemonRepository = PokemonRepository()
 ): ViewModel() {
 
     private val listPokemon = mutableListOf<PokemonItem>()
@@ -24,7 +24,7 @@ class PokemonListViewModel(
                 val fetchedPokemonList = repository.getPokemonList()
                 listPokemon.clear()
                 listPokemon.addAll(fetchedPokemonList)
-                _pokemonList.value = listPokemon
+                _pokemonList.value = fetchedPokemonList
                 Log.i("Fetch List Pokemon", "loadPokemon: Success ")
             } catch (e: Exception) {
                 Log.e("Fetch List Pokemon", "loadPokemon: Failed to fetch pokemon list", e)
@@ -38,7 +38,7 @@ class PokemonListViewModel(
             listPokemon
         } else {
             listPokemon.filter {
-                it.name.contains(queryPokemon)
+                it.name.lowercase().contains(queryPokemon)
             }
         }
         _pokemonList.value = filteredList

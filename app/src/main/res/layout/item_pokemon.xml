@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp">
+    card_view:cardElevation="4dp"
+    android:backgroundTint="@color/md_theme_surface"
+    card_view:cardBackgroundColor="@color/md_theme_surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,13 +18,12 @@
 
         <ImageView
             android:id="@+id/ivPokemon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginEnd="12dp"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerInside" />
 
-        <!-- Nama Pokémon -->
         <TextView
             android:id="@+id/tv_name_pokemon"
             android:layout_width="0dp"

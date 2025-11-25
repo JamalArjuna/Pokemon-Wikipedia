@@ -1,5 +1,7 @@
 package com.example.pokewiki.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonDetail(
     val id: Int,
     val name: String,
@@ -9,7 +11,8 @@ data class PokemonDetail(
 )
 
 data class Sprites(
-    val front_default: String
+    @SerializedName("front_default")
+    val front_default: String?
 )
 data class TypeSlot(
     val slot: Int,
